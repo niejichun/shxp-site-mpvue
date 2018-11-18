@@ -17,10 +17,11 @@ function request (url, method, data) {
       method,
       url: config.host + url,
       success: function (res) {
-        if (res.data.code === 0) {
-          resolve(res.data.data)
+        console.log(res)
+        if (res.data.errno === 0) {
+          resolve(res.data.info)
         } else {
-          showModal('失败', res.data.data.msg)
+          showModal('失败', res.errorMsg)
           reject(res.data)
         }
       }
