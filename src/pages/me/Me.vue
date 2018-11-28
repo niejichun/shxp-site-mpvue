@@ -157,6 +157,9 @@
 
 <template>
   <div class="contain">
+    <button open-type="getUserInfo" @getuserinfo="bindGetUserInfo" @click="getSetting">获取权限</button>
+    <span>openId:{{openId}}</span>
+    <button @click="getOpenId">getOpenId</button>
     <scroll-view scroll-x class="top">
       <div class="tabbar" :class="{'tabbar-bottom':currentTab==index}" v-for="(item,index) in tabBar" :key="index" @click="clickTab(index)">
         {{item.title}}
@@ -169,7 +172,7 @@
         </div>
       </swiper-item>
       <swiper-item>
-        <div>
+        <div>n
           222
         </div>
       </swiper-item>
@@ -183,6 +186,7 @@
 </template>
 
 <script>
+  import {mapState, mapMutations} from 'vuex'
   export default {
     data () {
       return {
@@ -194,7 +198,78 @@
         currentTab: 0
       }
     },
+    computed: {
+      ...mapState([
+        'openId'
+      ])
+    },
+    mounted () {
+      // this.getSetting()
+      // this.getSystemInfo()
+    },
     methods: {
+      ...mapMutations({
+        setOpenId: 'SET_OPEN_ID'
+      }),
+      getUserInfo1 (e) {
+        console.log('111', e.mp.detail.userInfo)
+      },
+
+      getOpenId () {
+        let _this = this
+        wx.login({
+          // 获取code
+          success: function (res) {
+            var code = res.code // 返回code
+            console.log(code)
+            var appId = 'wxb141309c0101eb3d'
+            var secret = '78ce417ce31de1c2f33ae60c9c174a5a'
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code',
+              data: {},
+              header: {
+                'content-type': 'json'
+              },
+              success: function (res) {
+                var openid = res.data.openid // 返回openid
+                console.log('openid为' + openid)
+                _this.setOpenId(openid)
+              }
+            })
+          }
+        })
+      },
+      getSetting () {
+        wx.getSetting({
+          success: function (res) {
+            if (res.authSetting['scope.userInfo']) {
+              wx.getUserInfo({
+                success: function (res) {
+                  console.log(res.userInfo)
+                  // 用户已经授权过
+                  console.log('用户已经授权过')
+                }
+              })
+            } else {
+              console.log('用户还未授权过')
+            }
+          }
+        })
+      },
+      getSystemInfo () {
+        wx.getSystemInfo({
+          success: function (res) {
+            console.log(res.model) //  手机型号
+            console.log(res.pixelRatio)
+            console.log(res.windowWidth)
+            console.log(res.windowHeight)
+            console.log(res.language)
+            console.log(res.version)
+            console.log(res.platform)
+            console.log(res.system) //  操作系统版本
+          }
+        })
+      },
       clickTab (e) {
         this.currentTab = e
       },

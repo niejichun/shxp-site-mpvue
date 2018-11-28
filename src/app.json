@@ -1,13 +1,13 @@
 {
     "pages": [
-        "pages/me/main",
         "pages/books/main",
+        "pages/me/main",
         "pages/comments/main"
         ],
     "window": {
        "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#EA5149",
-        "navigationBarTitleText": "蜗牛图书",
+        "navigationBarTitleText": "大蘑菇食堂",
         "navigationBarTextStyle": "light"
     },
     "tabBar": {
@@ -32,5 +32,65 @@
         "selectedIconPath": "static/img/me-active.png"
             }
         ]
+    },
+    "usingComponents": {
+      "i-action-sheet": "../static/iview-weapp/action-sheet/index",
+      "i-alert": "../static/iview-weapp/alert/index",
+      "i-avatar": "../static/iview-weapp/avatar/index",
+      "i-badge": "../static/iview-weapp/badge/index",
+      "i-button": "../static/iview-weapp/button/index",
+      "i-card": "../static/iview-weapp/card/index",
+      "i-cell": "../static/iview-weapp/cell/index",
+      "i-cell-group": "../static/iview-weapp/cell-group/index",
+      "i-checkbox": "../static/iview-weapp/checkbox/index",
+      "i-checkbox-group": "../static/iview-weapp/checkbox-group/index",
+      "i-col": "../static/iview-weapp/col/index",
+      "i-collapse": "../static/iview-weapp/collapse/index",
+      "i-collapse-item": "../static/iview-weapp/collapse-item/index",
+      "i-count-down": "../static/iview-weapp/count-down/index",
+      "i-divider": "../static/iview-weapp/divider/index",
+      "i-drawer": "../static/iview-weapp/drawer/index",
+      "i-grid": "../static/iview-weapp/grid/index",
+      "i-grid-icon": "../static/iview-weapp/grid-icon/index",
+      "i-grid-item": "../static/iview-weapp/grid-item/index",
+      "i-grid-label": "../static/iview-weapp/grid-label/index",
+      "i-icon": "../static/iview-weapp/icon/index",
+      "i-index": "../static/iview-weapp/index/index",
+      "i-index-item": "../static/iview-weapp/index-item/index",
+      "i-input": "../static/iview-weapp/input/index",
+      "i-input-number": "../static/iview-weapp/input-number/index",
+      "i-load-more": "../static/iview-weapp/load-more/index",
+      "i-message": "../static/iview-weapp/message/index",
+      "i-modal": "../static/iview-weapp/modal/index",
+      "i-notice-bar": "../static/iview-weapp/notice-bar/index",
+      "i-page": "../static/iview-weapp/page/index",
+      "i-panel": "../static/iview-weapp/panel/index",
+      "i-progress": "../static/iview-weapp/progress/index",
+      "i-radio": "../static/iview-weapp/radio/index",
+      "i-radio-group": "../static/iview-weapp/radio-group/index",
+      "i-rate": "../static/iview-weapp/rate/index",
+      "i-row": "../static/iview-weapp/row/index",
+      "i-slide": "../static/iview-weapp/slide/index",
+      "i-spin": "../static/iview-weapp/spin/index",
+      "i-step": "../static/iview-weapp/step/index",
+      "i-steps": "../static/iview-weapp/steps/index",
+      "i-sticky": "../static/iview-weapp/sticky/index",
+      "i-sticky-item": "../static/iview-weapp/sticky-item/index",
+      "i-swipeout": "../static/iview-weapp/swipeout/index",
+      "i-switch": "../static/iview-weapp/switch/index",
+      "i-tab": "../static/iview-weapp/tab/index",
+      "i-tab-bar": "../static/iview-weapp/tab-bar/index",
+      "i-tab-bar-item": "../static/iview-weapp/tab-bar-item/index",
+      "i-tabs": "../static/iview-weapp/tabs/index",
+      "i-tag": "../static/iview-weapp/tag/index",
+      "i-toast": "../static/iview-weapp/toast/index"
     }
 }
+
+
+
+
+
+
+
+
