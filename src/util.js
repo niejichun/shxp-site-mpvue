@@ -43,3 +43,9 @@ export function showSuccess (text) {
     icon: 'success'
   })
 }
+
+export function sendP (phone) {
+  wx.makePhoneCall({
+    phoneNumber: phone
+  })
+}

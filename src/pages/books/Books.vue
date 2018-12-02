@@ -1,126 +1,186 @@
 
 <template>
   <div>
-
-    <!--<input placeholder="这个只有在按钮点击的时候才聚焦" :focus="focus"-->
-    <!--style="width: 300rpx;background-color: red"/>-->
-    <!--<searchbar>123</searchbar>-->
-    <i-button bind:click="handleClick" type="success" shape="circle" size="large">大尺寸</i-button>
-    <!--<i-tab>123123</i-tab>-->
-    <i-tabs :current="current" color="#f759ab" bindchange="handleChange">
-      <i-tab key="tab1" title="选项1"></i-tab>
-      <i-tab key="tab2" title="选项2"></i-tab>
-      <i-tab key="tab3" title="选项3"></i-tab>
-    </i-tabs>
-    <i-panel title="基础用法">
-      <i-input :value="value1" title="收货人" autofocus placeholder="名字" />
-      <i-input :value="value2" type="number" title="联系电话" placeholder="请输入手机号" />
-      <i-input :value="value3" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
-      <i-input :value="value4" title="用户信息" disabled />
-    </i-panel>
-
-    <i-panel title="无标题输入框">
-      <i-input :value="value5" placeholder="请输入收货人姓名" />
-    </i-panel>
-
-    <i-panel title="圆角输入框">
-      <i-input :value="value6" type="number" right title="消费总额" mode="wrapped" placeholder="询问收银员后输入" />
-      <i-input :value="value7" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" />
-    </i-panel>
-    <swiper class="swiper" indicator-dots="true" autoplay="true" interval="2000" duration="1000">
+    <!--banner-->
+    <swiper class="swiper" indicator-dots="true" autoplay="true"
+            interval="5000" duration="1000"
+            indicator-color="white">
       <block v-for="(item, index) in movies" :index="index" :key="key">
         <swiper-item>
-          <image :src="item.url" class="slide-image" mode="aspectFill" style="width: 100%"/>
+          <image :src="item.url" class="slide-image" mode="widthFix" style="width: 100%"/>
         </swiper-item>
       </block>
     </swiper>
+    <!--banner end-->
 
-      <!--<scroll-view class='scroll-view scroll-class' scroll-x="true">-->
-        <!--<div class="view-div" v-for="item in tabBar">{{item.title}}</div>-->
-      <!--</scroll-view>-->
+    <!--预约订座 title-->
+    <i-row style="position:relative;top: 20px;">
+      <i-col span="9">
+        <span style="float: right;color: darkgrey">-</span>
+      </i-col>
+      <i-col span="6" style="text-align: center">
+          <span style="font-size: 15px">预约订座</span>
+      </i-col>
+      <i-col span="9">
+        <span style="color: darkgrey">-</span>
+      </i-col>
+    </i-row>
+    <!--预约订座 title end -->
 
+
+    <i-row style="position:relative;top: 30px;">
+      <i-col span="24">
+        <div style="height: 1rpx;width:100%;background-color: gray"></div>
+      </i-col>
+    </i-row>
+
+
+    <!--预约订座 seat picture-->
+    <i-row style="position:relative;top: 50px;">
+      <i-col span="12" style="text-align: center">
+          <image src="/static/img/seat-4.jpeg"
+                 class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div class="LeftBlock">二人桌</div>
+      </i-col>
+
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-2.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div class="rightBlock">四人桌</div>
+      </i-col>
+    </i-row>
+
+    <i-row style="position:relative;top: 60px;">
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-n.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div class="LeftBlock">六人桌</div>
+      </i-col>
+
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-6.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div class="rightBlock">团体活动</div>
+      </i-col>
+    </i-row>
+    <!--预约订座 seat picture end-->
+
+    <!--关于我们-->
+    <i-row style="position:relative;top: 100px;">
+      <i-col span="24" style="text-align: center">
+        <image src="/static/img/aboutme.jpg"
+               class="slide-image" mode="widthFix" style="width: 100%;"/>
+      </i-col>
+    </i-row>
+    <!--关于我们end-->
+
+    <!--招牌菜式 title-->
+    <i-row style="position:relative;top: 120px;">
+      <i-col span="9">
+        <span style="float: right;color: darkgrey">-</span>
+      </i-col>
+      <i-col span="6" style="text-align: center">
+        <span style="font-size: 15px">招牌菜式</span>
+      </i-col>
+      <i-col span="9">
+        <span style="color: darkgrey">-</span>
+      </i-col>
+    </i-row>
+    <!--招牌菜式 title end -->
+
+
+    <i-row style="position:relative;top: 130px;">
+      <i-col span="24">
+        <div style="height: 1rpx;width:100%;background-color: gray"></div>
+      </i-col>
+    </i-row>
+
+
+    <i-row style="position:relative;top: 150px;">
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-4.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div>二人桌</div>
+      </i-col>
+
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-2.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div>四人桌</div>
+      </i-col>
+    </i-row>
+
+    <i-row style="position:relative;top: 160px;">
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-n.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div>六人桌</div>
+      </i-col>
+
+      <i-col span="12" style="text-align: center">
+        <image src="/static/img/seat-6.jpeg"
+               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        <div>团体活动</div>
+      </i-col>
+    </i-row>
+    <!--拨打电话-->
+    <div style="width: 40px;height: 40px;position: fixed;background-color:gray;top: 50%;right: 20px;z-index: 999;border-radius: 20px;text-align: center;color: white;" @click="sendPhone">
+      P
+    </div>
   </div>
 </template>
 
 <script >
-
+import {sendP} from '@/util'
 export default {
   data () {
     return {
-      current: 'tab1',
-      current_scroll: 'tab1',
-      focus: true,
       movies: [
-        {url: 'static/img/1.jpg'},
-        {url: 'static/img/2.jpg'},
-        {url: 'static/img/3.jpg'},
-        {url: 'static/img/4.jpg'}
-      ],
-      tabBar: [
-        { 'title': '推荐' },
-        { 'title': '电视剧' },
-        { 'title': '电影' },
-        { 'title': '美剧' },
-        { 'title': '韩剧' },
-        { 'title': '日剧' },
-        { 'title': '综艺' },
-        { 'title': '动画' }
-      ],
-      currentTab: 0,
-      value1: '',
-      value2: '',
-      value3: '',
-      value4: '输入框已禁用',
-      value5: '',
-      value6: '',
-      value7: ''
+        {url: '/static/img/banner1.png'},
+        {url: '/static/img/banner2.png'}
+      ]
     }
   },
   methods: {
-    clickTab (e) {
-      this.currentTab = e
-    },
-    changeTab (e) {
-      this.currentTab = e.mp.detail.current
-    },
-    scrolltolower () {
-      console.log(7)
-    },
-    scroll (e) {
-      console.log(6)
-      console.log(e)
-    },
-    handleChange ({ detail }) {
-      this.setData({
-        current: detail.key
-      })
-    },
-
-    handleChangeScroll ({ detail }) {
-      this.setData({
-        current_scroll: detail.key
-      })
+    sendPhone: function () {
+      sendP('15898131992')
     }
   }
 }
 </script>
 <style >
-  .scroll-class {
-    position: absolute;
-    top:0rpx
+  .swiper{
+    height: 365rpx;
   }
-  .scroll-view {
-    text-align: left;
-    white-space: nowrap;
-    overflow-x: scroll;
+  .LeftBlock{
+    display:block;
+    width:298rpx;
+    height:94%;
+    z-index:12;
+    position:absolute;
+    background:rgba(0,0,0,0.4);
+    position:absolute;
+    top:0px;
+    border-radius:5px;
+    left:21px;
+    color:white;
+    font-size: 20px;
+    line-height: 185rpx;
   }
-  .view-div {
-    color: white;
-    font-size: 28rpx;
-    display: inline-block;
-    background: green;
-    padding: 20rpx 45rpx;
-    background:linear-gradient(rgb(28,25,23),rgb(118,114,111))
-    /*border: 1rpx solid #fff;*/
+
+  .rightBlock{
+    display:block;
+    width:298rpx;
+    height:91%;
+    z-index:12;
+    position:absolute;
+    background:rgba(0,0,0,0.4);
+    position:absolute;
+    top:0px;
+    border-radius:5px;
+    left:417rpx;
+    color:white;
+    font-size: 20px;
+    line-height: 185rpx;
   }
 </style>
