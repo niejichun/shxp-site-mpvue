@@ -1,6 +1,6 @@
 {
     "pages": [
-        "pages/books/main",
+        "pages/home/main",
         "pages/me/main",
         "pages/comments/main"
         ],
@@ -14,7 +14,7 @@
     "selectedColor": "#EA5149",
     "list": [
         {
-        "pagePath": "pages/books/main",
+        "pagePath": "pages/home/main",
         "text": "首页",
         "iconPath": "static/img/book.png",
         "selectedIconPath": "static/img/book-active.png"
