@@ -47,10 +47,11 @@
     <titleClass :titleLabel='titleLabel.menuCommand'></titleClass>
 
     <!--招牌菜式 -->
+    <!--https://www.jb51.net/article/130017.htm  图片预览参考-->
     <i-row style="position:relative;left: 18px;">
       <block v-for="(item, index) in signboards" :index="index" :key="key">
         <i-col span="12">
-          <image :src="item.url" class="slide-image" mode="widthFix" style="width: 79%;border-radius:5px"/>
+          <image :src="item.url" class="slide-image" mode="widthFix" style="width: 79%;border-radius:5px" @click="showPricture"/>
           <span style="display: block;font-size: 11px">{{item.name}}</span>
         </i-col>
       </block>
@@ -118,6 +119,16 @@
     methods: {
       sendPhone: function () {
         sendP('15898131992')
+      },
+      showPricture: function (e) {
+        wx.previewImage({
+          current: e.target.dataset.src, // 当前显示图片的http链接
+          urls: [
+            '/static/img/seat-1.jpg',
+            '/static/img/seat-2.jpg',
+            '/static/img/seat-3.jpg'
+          ] // 需要预览的图片http链接列表
+        })
       }
     }
   }
