@@ -1,8 +1,8 @@
 {
     "pages": [
         "pages/home/main",
-        "pages/me/main",
-        "pages/comments/main"
+        "pages/menu/main",
+        "pages/me/main"
         ],
     "window": {
        "backgroundTextStyle": "light",
@@ -20,7 +20,7 @@
         "selectedIconPath": "static/img/book-active.png"
         },
         {
-        "pagePath": "pages/comments/main",
+        "pagePath": "pages/menu/main",
         "text": "菜单",
         "iconPath": "static/img/todo.png",
         "selectedIconPath": "static/img/todo-active.png"

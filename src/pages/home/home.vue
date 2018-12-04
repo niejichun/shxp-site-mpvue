@@ -5,68 +5,30 @@
     <swiper class="swiper" indicator-dots="true" autoplay="true"
             interval="5000" duration="1000"
             indicator-color="white">
-      <block v-for="(item, index) in movies" :index="index" :key="key">
+      <block v-for="(item, index) in banners" :index="index" :key="key">
         <swiper-item>
           <image :src="item.url" class="slide-image" mode="widthFix" style="width: 100%"/>
         </swiper-item>
       </block>
     </swiper>
     <!--banner end-->
-
-    <!--预约订座 title-->
-    <i-row style="position:relative;top: 20px;">
-      <i-col span="9">
-        <span style="float: right;color: darkgrey">-</span>
-      </i-col>
-      <i-col span="6" style="text-align: center">
-        <span style="font-size: 15px">预约订座</span>
-      </i-col>
-      <i-col span="9">
-        <span style="color: darkgrey">-</span>
-      </i-col>
-    </i-row>
-    <!--预约订座 title end -->
-
-
-    <i-row style="position:relative;top: 30px;">
-      <i-col span="24">
-        <div style="height: 1rpx;width:100%;background-color: gray"></div>
-      </i-col>
-    </i-row>
-
-
+    <titleClass :titleLabel='titleLabel.reserve'></titleClass>
     <!--预约订座 seat picture-->
-    <i-row style="position:relative;top: 50px;">
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/seat-4.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div class="LeftBlock">二人桌</div>
-      </i-col>
-
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/seat-2.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div class="rightBlock">四人桌</div>
-      </i-col>
+    <i-row style="position:relative;left: 18px;">
+      <block v-for="(item, index) in tableType" :index="index" :key="key">
+        <i-col span="12">
+          <image :src="item.url" class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
+        </i-col>
+      </block>
     </i-row>
-
-    <i-row style="position:relative;top: 60px;">
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/seat-n.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div class="LeftBlock">六人桌</div>
-      </i-col>
-
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/seat-6.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div class="rightBlock">团体活动</div>
-      </i-col>
-    </i-row>
+    <div class="oneBlock">二人桌</div>
+    <div class="twoBlock">四人桌</div>
+    <div class="threeBlock">六人桌</div>
+    <div class="fourBlock">团体活动</div>
     <!--预约订座 seat picture end-->
 
     <!--关于我们-->
-    <i-row style="position:relative;top: 100px;">
+    <i-row style="position:relative;top: 20px;">
       <i-col span="24" style="text-align: center">
         <image src="/static/img/aboutme.jpg"
                class="slide-image" mode="widthFix" style="width: 100%;"/>
@@ -82,73 +44,76 @@
     </i-row>
     <!--关于我们end-->
 
-    <!--招牌菜式 title-->
-    <i-row style="position:relative;top: 120px;">
-      <i-col span="9">
-        <span style="float: right;color: darkgrey">-</span>
-      </i-col>
-      <i-col span="6" style="text-align: center">
-        <span style="font-size: 15px">招牌菜式</span>
-      </i-col>
-      <i-col span="9">
-        <span style="color: darkgrey">-</span>
-      </i-col>
+    <titleClass :titleLabel='titleLabel.menuCommand'></titleClass>
+
+    <!--招牌菜式 -->
+    <i-row style="position:relative;left: 18px;">
+      <block v-for="(item, index) in signboards" :index="index" :key="key">
+        <i-col span="12">
+          <image :src="item.url" class="slide-image" mode="widthFix" style="width: 79%;border-radius:5px"/>
+          <span style="display: block;font-size: 11px">{{item.name}}</span>
+        </i-col>
+      </block>
     </i-row>
-    <!--招牌菜式 title end -->
-
-
-    <i-row style="position:relative;top: 130px;">
-      <i-col span="24">
-        <div style="height: 1rpx;width:100%;background-color: gray"></div>
-      </i-col>
-    </i-row>
-
-
-    <i-row style="position:relative;top: 150px;">
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/signboard1.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div style="text-align: left;font-size: 10px;padding-left: 14px">西冷牛扒</div>
-      </i-col>
-
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/signboard2.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div style="text-align: left;font-size: 10px;padding-left: 14px">海鲜杂烩</div>
-      </i-col>
-    </i-row>
-
-    <i-row style="position:relative;top: 160px;">
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/signboard3.jpeg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div style="text-align: left;font-size: 10px;padding-left: 14px">法国鹅肝</div>
-      </i-col>
-
-      <i-col span="12" style="text-align: center">
-        <image src="/static/img/signboard4.jpg"
-               class="slide-image" mode="widthFix" style="width: 80%;border-radius:5px"/>
-        <div style="text-align: left;font-size: 10px;padding-left: 14px">极品三文鱼</div>
-      </i-col>
-    </i-row>
+    <!--招牌菜式 end -->
     <!--拨打电话-->
     <div style="width: 30px;height: 30px;position: fixed;top: 50%;right: 10px;z-index: 999;border-radius: 20px;text-align: center;color: white;" @click="sendPhone">
       <image src="/static/img/phone.png"
              class="slide-image" mode="widthFix" style="width: 100%;"/>
+    </div>
+
+    <div class="weui-uploader__input-box">
+      <div class="weui-uploader__input"></div>
     </div>
   </div>
 </template>
 
 <script >
   import {sendP} from '@/util'
+  import titleClass from '../../components/title'
   export default {
     data () {
       return {
-        movies: [
+        titleLabel: {
+          reserve: '预约订桌',
+          menuCommand: '推荐菜品'
+        },
+        banners: [
           {url: '/static/img/banner1.png'},
           {url: '/static/img/banner2.png'}
+        ],
+        tableType: [
+          {url: '/static/img/seat-2.jpg'},
+          {url: '/static/img/seat-4.jpg'},
+          {url: '/static/img/seat-6.jpg'},
+          {url: '/static/img/seat-n.jpg'}
+        ],
+        signboards: [
+          {
+            url: '/static/img/signboard1.jpg',
+            name: '至尊牛排',
+            price: 58
+          },
+          {
+            url: '/static/img/signboard2.jpg',
+            name: '海鲜杂烩',
+            price: 108
+          },
+          {
+            url: '/static/img/signboard3.jpg',
+            name: '法国鹅肝',
+            price: 98
+          },
+          {
+            url: '/static/img/signboard4.jpg',
+            name: '三文鱼',
+            price: 48
+          }
         ]
       }
+    },
+    components: {
+      titleClass
     },
     methods: {
       sendPhone: function () {
@@ -161,35 +126,64 @@
   .swiper{
     height: 365rpx;
   }
-  .LeftBlock{
+  .oneBlock{
     display:block;
     width:298rpx;
-    height:94%;
+    height:193rpx;
     z-index:12;
     position:absolute;
+    top:528rpx;
+    left:46rpx;
     background:rgba(0,0,0,0.4);
-    position:absolute;
-    top:0px;
     border-radius:5px;
-    left:21px;
     color:white;
     font-size: 20px;
     line-height: 185rpx;
+    text-align: center;
   }
-
-  .rightBlock{
+  .twoBlock{
     display:block;
     width:298rpx;
-    height:95%;
+    height:193rpx;
     z-index:12;
     position:absolute;
+    top:528rpx;
+    left:421rpx;
     background:rgba(0,0,0,0.4);
-    position:absolute;
-    top:0px;
     border-radius:5px;
-    left:417rpx;
     color:white;
     font-size: 20px;
     line-height: 185rpx;
+    text-align: center;
+  }
+  .threeBlock{
+    display:block;
+    width:298rpx;
+    height:193rpx;
+    z-index:12;
+    position:absolute;
+    top:733rpx;
+    left:46rpx;
+    background:rgba(0,0,0,0.4);
+    border-radius:5px;
+    color:white;
+    font-size: 20px;
+    line-height: 185rpx;
+    text-align: center;
+  }
+  .fourBlock{
+    display:block;
+    width:298rpx;
+    height:193rpx;
+    z-index:12;
+    position:absolute;
+    top:733rpx;
+    left:421rpx;
+    background:rgba(0,0,0,0.4);
+    border-radius:5px;
+    color:white;
+    font-size: 20px;
+    line-height: 185rpx;
+    text-align: center;
   }
 </style>
