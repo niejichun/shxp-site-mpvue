@@ -70,15 +70,12 @@
 </template>
 
 <script >
-  import {sendP} from '@/util'
+  import {sendP, titleLabel} from '@/util'
   import titleClass from '../../components/title'
   export default {
     data () {
       return {
-        titleLabel: {
-          reserve: '预约订桌',
-          menuCommand: '推荐菜品'
-        },
+        titleLabel: titleLabel,
         banners: [
           {url: '/static/img/banner1.png'},
           {url: '/static/img/banner2.png'}

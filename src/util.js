@@ -49,3 +49,11 @@ export function sendP (phone) {
     phoneNumber: phone
   })
 }
+
+export let titleLabel = {
+  reserve: '预约订桌',
+  menuCommand: '推荐菜品',
+  salad: '沙拉',
+  stapleFood: '主食',
+  drink: '饮品'
+}

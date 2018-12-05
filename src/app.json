@@ -2,6 +2,7 @@
     "pages": [
         "pages/home/main",
         "pages/menu/main",
+        "pages/subscribe/main",
         "pages/me/main"
         ],
     "window": {
@@ -26,7 +27,7 @@
         "selectedIconPath": "static/img/todo-active.png"
         },
         {
-        "pagePath": "pages/me/main",
+        "pagePath": "pages/subscribe/main",
         "text": "预约订桌",
         "iconPath": "static/img/me.png",
         "selectedIconPath": "static/img/me-active.png"
