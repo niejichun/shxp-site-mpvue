@@ -3,6 +3,7 @@
         "pages/home/main",
         "pages/menu/main",
         "pages/subscribe/main",
+        "pages/subscribeDetail/main",
         "pages/me/main"
         ],
     "window": {
