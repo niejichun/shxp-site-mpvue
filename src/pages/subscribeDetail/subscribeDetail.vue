@@ -1,5 +1,12 @@
 <template>
   <div>
+
+    <div>
+      <img src="/static/img/seat-2.jpg" alt="">
+      <span>双人座</span>
+      <span>适合2人约会</span>
+      <span>￥398</span>
+    </div>
     <i-panel title="输入用户信息">
       <i-input :value="value1" title="姓名" autofocus placeholder="名字" />
       <i-input :value="value2" type="number" title="联系电话" placeholder="请输入手机号" />
@@ -18,7 +25,8 @@
       }
     },
     mounted: function () {
-      this.id = this.$root.$mp.query.id // 获取参数
+      this.params = this.$root.$mp.query // 获取参数
+
       this.value1 = ''
       this.value2 = ''
       this.value3 = ''
