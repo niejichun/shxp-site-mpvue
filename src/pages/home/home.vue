@@ -70,9 +70,11 @@
 </template>
 
 <script >
-  import {sendP, titleLabel} from '@/util'
+  import {sendP, titleLabel, post} from '@/util'
+  import config from '@/config'
   import titleClass from '../../components/title'
-  export default {
+  const apiUrl = '/api/shxp/wechat/SHXPWEHomeControl?method='
+export default {
     data () {
       return {
         titleLabel: titleLabel,
@@ -86,45 +88,32 @@
           {url: '/static/img/seat-6.jpg'},
           {url: '/static/img/seat-n.jpg'}
         ],
-        signboards: [
-          {
-            url: '/static/img/signboard1.jpg',
-            name: '至尊牛排',
-            price: 58
-          },
-          {
-            url: '/static/img/signboard2.jpg',
-            name: '海鲜杂烩',
-            price: 108
-          },
-          {
-            url: '/static/img/signboard3.jpg',
-            name: '法国鹅肝',
-            price: 98
-          },
-          {
-            url: '/static/img/signboard4.jpg',
-            name: '三文鱼',
-            price: 48
-          }
-        ]
+        signboards: [],
+        showSignboardImg: []
       }
     },
     components: {
       titleClass
     },
+    mounted: function () {
+      this.getSignboard()
+    },
     methods: {
+      getSignboard: async function () {
+        const res = await post(apiUrl + 'searchSignboardProduct', {})
+        for (let r of res) {
+          r.url = config.host + r.url
+          this.showSignboardImg.push(r.url)
+        }
+        this.signboards = res
+      },
       sendPhone: function () {
         sendP('15898131992')
       },
       showPricture: function (e) {
         wx.previewImage({
           current: e.target.dataset.src, // 当前显示图片的http链接
-          urls: [
-            '/static/img/seat-1.jpg',
-            '/static/img/seat-2.jpg',
-            '/static/img/seat-3.jpg'
-          ] // 需要预览的图片http链接列表
+          urls: this.showSignboardImg
         })
       }
     }
