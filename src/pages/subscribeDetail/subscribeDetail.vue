@@ -16,14 +16,23 @@
     </div>
 
     <div style="height: 340px;">
-      <i-input :value="name" title="姓名" autofocus placeholder="名字" />
-      <i-input :value="number" type="number" title="联系电话" placeholder="请输入手机号" />
-      <i-input :value="leave" type="textarea" title="预约留言" placeholder="最多50字" maxlength="50" />
+      <!--<input placeholder="这是一个可以自动聚焦的input" auto-focus />-->
+      <i-input @change="getName" type="textarea" autofocus placeholder="名字" />
+      <i-input @change="getPhone" type="textarea" title="联系电话" placeholder="请输入手机号" />
+      <i-input @change="getRemark" type="textarea" title="预约留言" placeholder="最多50字" maxlength="50" />
 
-      <picker mode="date" :value="date" start="2018-09-01" @change="dateChange"
-        style="margin-left:13px;margin-top:10px;font-size:15px;color:dimgrey;">
-        预定时间&nbsp;&nbsp;&nbsp;{{date}}
+      <picker mode="date" start="2019-01-01" @change="getDate" style="margin-left:13px;margin-top:10px;font-size:15px;color:dimgrey;">
+        预定时间&nbsp;&nbsp;&nbsp;{{reserve.reserve_date}}
       </picker>
+
+      <i-row>
+        <i-col span="12">
+          <i-button @click="confirmInterval(0)">午餐</i-button>
+        </i-col>
+        <i-col span="12">
+          <i-button @click="confirmInterval(1)">晚餐</i-button>
+        </i-col>
+      </i-row>
 
       <i-button @click="handleClick" type="ghost" shape="circle" size="small">预定</i-button>
     </div>
@@ -37,26 +46,39 @@
   export default {
     data () {
       return {
-        name: '',
-        number: '',
-        leave: '',
+        reserve: {
+          reserve_date: ''
+        },
         seatInfo: {},
-        date: ''
+        interval: 0,
+        reserve_date: ''
       }
     },
     mounted: function () {
       this.seatInfo = this.$root.$mp.query // 获取参数
-      console.log(this.seatInfo)
     },
     methods: {
-      dateChange: function (e) {
-        console.log('picker发送选择改变，携带值为', e.mp.detail.value)
-        this.date = e.mp.detail.value
+      getName: function (event) {
+        this.reserve.reserve_name = event.mp.detail.detail.value
+      },
+      getPhone: function (event) {
+        this.reserve.reserve_phone = event.mp.detail.detail.value
+      },
+      getRemark: function (event) {
+        this.reserve.reserve_remark = event.mp.detail.detail.value
+      },
+      getDate: function (event) {
+        this.reserve.reserve_date = event.mp.detail.value
+      },
+      confirmInterval: function (interval) {
+        this.reserve.reserve_time_interval = interval
       },
       handleClick: async function () {
-        // todo
-        let res = await post(apiUrl + 'addReserve', {})
-        this.subscribeData = res
+        this.reserve.seatClass_id = this.seatInfo.id
+        let res = await post(apiUrl + 'addReserve', this.reserve)
+        if (res.state === 'success') {
+          wx.redirectTo({url: '../success/main'})
+        }
       }
     }
   }

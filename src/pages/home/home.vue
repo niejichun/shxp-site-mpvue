@@ -58,7 +58,7 @@
     </i-row>
     <!--招牌菜式 end -->
     <!--拨打电话-->
-    <div style="width: 30px;height: 30px;position: fixed;top: 50%;right: 10px;z-index: 999;border-radius: 20px;text-align: center;color: white;" @click="sendPhone">
+    <div style="width: 30px;height: 30px;position: fixed;top: 90%;right: 10px;z-index: 999;border-radius: 20px;text-align: center;color: white;" @click="sendPhone">
       <image src="/static/img/phone.png"
              class="slide-image" mode="widthFix" style="width: 100%;"/>
     </div>

@@ -130,7 +130,7 @@
       },
       gotoDetail (item) {
         wx.navigateTo({
-          url: `../subscribeDetail/main?url=${item.url}&name=${item.name}&price=${item.price}&title=${item.title}`
+          url: `../subscribeDetail/main?id=${item.id}&url=${item.url}&name=${item.name}&price=${item.price}&title=${item.title}`
         })
       }
     }

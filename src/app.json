@@ -4,6 +4,8 @@
         "pages/menu/main",
         "pages/subscribe/main",
         "pages/subscribeDetail/main",
+        "pages/success/main",
+        "pages/order/main",
         "pages/me/main"
         ],
     "window": {
@@ -34,7 +36,7 @@
         "selectedIconPath": "static/img/me-active.png"
             },
       {
-        "pagePath": "pages/me/main",
+        "pagePath": "pages/order/main",
         "text": "我的",
         "iconPath": "static/img/me.png",
         "selectedIconPath": "static/img/me-active.png"
