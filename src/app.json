@@ -20,26 +20,26 @@
         {
         "pagePath": "pages/home/main",
         "text": "首页",
-        "iconPath": "static/img/book.png",
-        "selectedIconPath": "static/img/book-active.png"
+        "iconPath": "static/img/home.png",
+        "selectedIconPath": "static/img/home.png"
         },
         {
         "pagePath": "pages/menu/main",
         "text": "菜单",
-        "iconPath": "static/img/todo.png",
-        "selectedIconPath": "static/img/todo-active.png"
+        "iconPath": "static/img/menu.png",
+        "selectedIconPath": "static/img/menu.png"
         },
         {
         "pagePath": "pages/subscribe/main",
         "text": "预约订桌",
-        "iconPath": "static/img/me.png",
-        "selectedIconPath": "static/img/me-active.png"
+        "iconPath": "static/img/reserve.png",
+        "selectedIconPath": "static/img/reserve.png"
             },
       {
-        "pagePath": "pages/order/main",
+        "pagePath": "pages/me/main",
         "text": "我的",
         "iconPath": "static/img/me.png",
-        "selectedIconPath": "static/img/me-active.png"
+        "selectedIconPath": "static/img/me.png"
       }
         ]
     },

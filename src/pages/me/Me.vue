@@ -1,21 +1,20 @@
 <template>
   <div>
-    123
-    <i-panel title="基础用法">
-      <i-input :value="value1" title="收货人" autofocus placeholder="名字" />
-      <i-input :value="value2" type="number" title="联系电话" placeholder="请输入手机号" />
-      <i-input :value="value3" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50" />
-      <i-input :value="value4" title="用户信息" disabled />
-    </i-panel>
+      <div v-if="canIUse">
+        <div class='header'>
+          <image src='/images/wx_login.png'></image>
+        </div>
 
-    <i-panel title="无标题输入框">
-      <i-input :value="value5" placeholder="请输入收货人姓名" />
-    </i-panel>
+        <div class='content'>
+          <view>申请获取以下权限</view>
+          <text>获得你的公开信息(昵称，头像等)</text>
+        </div>
 
-    <i-panel title="圆角输入框">
-      <i-input :value="value6" type="number" right title="消费总额" mode="wrapped" placeholder="询问收银员后输入" />
-      <i-input :value="value7" type="number" right error title="不参与优惠金额" mode="wrapped" placeholder="询问收银员后输入" />
-    </i-panel>
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+          授权登录
+        </button>
+      </div>
+
   </div>
 </template>
 
@@ -23,17 +22,22 @@
   export default {
     data () {
       return {
-        value1: '',
-        value2: '',
-        value3: '',
-        value4: '输入框已禁用',
-        value5: '',
-        value6: '',
-        value7: ''
+        canIUse: false
       }
     },
     mounted: function () {
-      this.id = this.$root.$mp.query.id // 获取参数
+      //canIUse  判断API
+      let a = wx.canIUse('button.open-type.getUserInfo')
+
+
+      // wx.getSetting({
+      //   success: (res) => {
+      //     console.log('res', res)
+      //     if (!res.authSetting['scope.userInfo']) {
+      //       this.canIUse = true
+      //     }
+      //   }
+      // })
     },
     methods: {
 
@@ -42,4 +46,35 @@
 </script>
 
 <style>
+  .header {
+    margin: 90rpx 0 90rpx 50rpx;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    width: 650rpx;
+    height: 300rpx;
+    line-height: 450rpx;
+  }
+
+  .header image {
+    width: 200rpx;
+    height: 200rpx;
+  }
+
+  .content {
+    margin-left: 50rpx;
+    margin-bottom: 90rpx;
+  }
+
+  .content text {
+    display: block;
+    color: #9d9d9d;
+    margin-top: 40rpx;
+  }
+
+  .bottom {
+    border-radius: 80rpx;
+    margin: 70rpx 50rpx;
+    font-size: 35rpx;
+  }
+
 </style>
