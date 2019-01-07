@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!--<button @click="logintest">test login</button>-->
       <div v-if="showAuthor">
         <div class='header'>
           <image src='/static/img/wechat.png'></image>
@@ -12,15 +11,16 @@
         </div>
 
         <button class='bottom' type='primary' open-type="getUserInfo" @getuserinfo="bindGetUserInfo">授权登录</button>
-      </div>
 
+        <!--个人账号无法微信认证，不能获取手机号-->
+        <!--<button class='bottom' type='primary' open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>-->
+      </div>
   </div>
 </template>
 
 <script>
   import {login, getSetting, getUserInfo, post} from '@/util'
   const apiUrl = '/api/shxp/wechat/SHXPWEMeControlSRV?method='
-  // const apiUrl = '/api/mobile/wechat?method='
   export default {
     data () {
       return {
@@ -71,13 +71,26 @@
         //   }
         // })
       },
+      getPhoneNumber: async function (e) {
+        console.log('e', e)
+      },
       bindGetUserInfo: async function (e) {
         let _self = this
+
         if (e.mp.detail.userInfo) { // 用户按了允许授权按钮
           let loginRes = await login()
-          console.log(loginRes.code)
-          let result = await post(apiUrl + 'get_openid', {code: loginRes.code})
-          console.log(result)
+          let userRes = await getUserInfo()
+          console.log('loginRes', loginRes)
+          console.log('userRes', userRes)
+          let param = {
+            code: loginRes.code,
+            encryptedData: userRes.encryptedData,
+            iv: userRes.iv,
+            userInfo: userRes.userInfo
+          }
+          console.log('param', param)
+          let result = await post(apiUrl + 'addUser', param)
+
           _self.showAuthor = false
         } else { // 用户按了拒绝按钮
           wx.showModal({
@@ -92,29 +105,7 @@
             }
           })
         }
-      },
-      logintest: async function () {
-        let codeRes = await login()
-        var appid = 'wxb141309c0101eb3d'// appid需自己提供，此处的appid我随机编写
-        var secret = '78ce417ce31de1c2f33ae60c9c174a5a'// secret需自己提供，此处的secret我随机编写
-
-        // 调用微信登录接口
-        var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appid + '&secret=' + secret + '&js_code=' + codeRes.code + '&grant_type=authorization_code'
-        wx.request({
-          url: l,
-          data: {},
-          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          // header: {}, // 设置请求的 header
-          success: function (res) {
-            // var obj={};
-            // obj.openid=res.data.openid;
-            // obj.expires_in=Date.now()+res.data.expires_in;
-            console.log(res)
-          // wx.setStorageSync('user', obj);//存储openid
-          }
-        })
       }
-
     }
   }
 </script>
