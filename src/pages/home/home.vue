@@ -66,6 +66,23 @@
     <div class="weui-uploader__input-box">
       <div class="weui-uploader__input"></div>
     </div>
+
+
+    <div v-if="showAuthor">
+        <div class='header'>
+          <image src='/static/img/wechat.png'></image>
+        </div>
+
+        <div class='content'>
+          <view>申请获取以下权限</view>
+          <text>获得你的公开信息(昵称，头像等)</text>
+        </div>
+
+        <button class='bottom' type='primary' open-type="getUserInfo" @getuserinfo="bindGetUserInfo">授权登录</button>
+
+        <!--个人账号无法微信认证，不能获取手机号-->
+        <!--<button class='bottom' type='primary' open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>-->
+      </div>
   </div>
 </template>
 
