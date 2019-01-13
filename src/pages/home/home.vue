@@ -83,9 +83,6 @@
         <!--个人账号无法微信认证，不能获取手机号-->
         <!--<button class='bottom' type='primary' open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">授权登录</button>-->
       </div>
-
-
-      
   </div>
 </template>
 
